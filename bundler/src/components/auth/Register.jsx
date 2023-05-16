@@ -2,6 +2,9 @@ import { Box,Container, FormControl, FormLabel, Heading, Input, VStack,Stack, Bu
 import React from 'react'
 import { useState } from 'react'
 import {  Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { register } from '../../redux/actions/user.js';
+
 
 
 
@@ -21,12 +24,23 @@ export const fileUploadStyle={
 
 
 const Register = () => {
+    const dispatch=useDispatch()
 
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState("")
     const [name,setName]=useState("")
     const [imgPrev,setImgPrev]=useState("")
     const [image,setImage]=useState('')
+    const submitHandler=(e)=>{
+        e.preventDefault();
+        const myForm=new FormData();
+        myForm.append("name",name)
+        myForm.append("email",email)
+        myForm.append("password",password)
+        myForm.append("file",image)
+
+        dispatch(register(myForm))
+    }
 
     const changeImageHandler=(e)=>{
         const file=e.target.files[0]
@@ -47,7 +61,7 @@ const Register = () => {
    <Container minH={"100vh"} display={"flex"} flexDirection={"column"} justifyContent={"center"}>
    <Heading color={'red.400'} paddingBottom={"4"} marginBottom={"4"} paddingTop={"4"} textAlign={'center'} bgColor={"black"}>Welcome To Bundler</Heading>
    <VStack  >
-   <form>
+   <form onSubmit={submitHandler}>
    <Stack spacing={['2',"4"]}>
    <Box display={'flex'}  justifyContent={"center"}><Avatar src={imgPrev} size={['lg','xl']}/></Box>
 

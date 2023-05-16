@@ -12,7 +12,7 @@ import {
   ModalOverlay,
   ModalContent,
   ModalCloseButton,
-  FormControl,
+ 
   ModalBody,
   Input,
   ModalFooter,
@@ -23,8 +23,10 @@ import { RiDeleteBin7Fill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 
 
+
 const Profile = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+ 
 
   const changeImageSubmitHandler = (e, image) => {
     e.preventDefault();
