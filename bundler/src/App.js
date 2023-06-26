@@ -33,21 +33,18 @@ function App() {
   const { isAuthenticated, user, error, message } = useSelector(
     state => state.user
   );
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadUser());
-  }, [dispatch]);
+ 
 
-  useEffect(() => {
-    if (error) {
-      toast.error(error);
-      dispatch({ type: 'clearError' });
-    }
-    if (message) {
-      toast.success(message);
-      dispatch({ type: 'clearMessage' });
-    }
-  }, [dispatch, error, message]);
+  // useEffect(() => {
+  //   if (error) {
+  //     toast.error(error);
+  //     dispatch({ type: 'clearError' });
+  //   }
+  //   if (message) {
+  //     toast.success(message);
+  //     dispatch({ type: 'clearMessage' });
+  //   }
+  // }, [dispatch, error, message]);
 
   return (
     <BrowserRouter>
