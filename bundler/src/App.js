@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import About from './components/about/About';
 import ForgetPassword from './components/auth/ForgetPassword';
 import Login from './components/auth/Login';
@@ -33,18 +33,21 @@ function App() {
   const { isAuthenticated, user, error, message } = useSelector(
     state => state.user
   );
- 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (error) {
-  //     toast.error(error);
-  //     dispatch({ type: 'clearError' });
-  //   }
-  //   if (message) {
-  //     toast.success(message);
-  //     dispatch({ type: 'clearMessage' });
-  //   }
-  // }, [dispatch, error, message]);
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch({ type: 'clearError' });
+    }
+    if (message) {
+      toast.success(message);
+      dispatch({ type: 'clearMessage' });
+    }
+  }, [dispatch, error, message]);
 
   return (
     <BrowserRouter>
@@ -53,9 +56,16 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:id" element={<CoursePage />} />
-        <Route
-          path="login"
+       {/* {isAuthenticated ? (
+        <Route  path="/login" element=<Home/>/>
+       ):(  <Route
+          path="/login"
           element={<Login isAuthenticated={isAuthenticated} />}
+        />)} */}
+
+        <Route
+          path="/login"
+          element={ isAuthenticated ?  <Home  isAuthenticated={isAuthenticated} /> :<Login isAuthenticated={isAuthenticated} />}
         />
         <Route path="/register" element={<Register />} />
         <Route path="/request" element={<Request />} />

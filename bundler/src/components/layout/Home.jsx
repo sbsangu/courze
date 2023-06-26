@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Box,
   Button,
@@ -10,14 +10,23 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import '.././home.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import vg from '../../assets/images/bg.png';
 import { CgGoogle, CgYoutube } from 'react-icons/cg';
 import { SiCoursera, SiUdemy } from 'react-icons/si';
 import { DiAws } from 'react-icons/di';
 import introVideo from '../../assets/videos/intro.mp4';
 
-const Home = () => {
+
+const Home = ({isAuthenticated}) => {
+  const navigate=useNavigate()
+
+  useEffect(() => {
+    if(isAuthenticated)(
+      navigate("/")
+    )
+  }, [isAuthenticated])
+  
   return (
     <section className="home">
       <Box className="container" height={['auto','100vh']} display={'flex'}

@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loadUser, login } from '../../redux/actions/user';
 import { useNavigate } from 'react-router-dom';
+import { typography } from '@chakra-ui/react';
 
 const Login = ({ isAuthenticated }) => {
   const [email, setEmail] = useState('');
@@ -54,7 +55,15 @@ const Login = ({ isAuthenticated }) => {
         >
           Welcome To Bundler
         </Heading>
+
+
+       
         <VStack>
+
+        {isAuthenticated ? (
+          <h3>You Are Already Logged In</h3>
+        ):(
+
           <form onSubmit={submitHandler}>
             <Stack spacing={'7'}>
               <Box>
@@ -117,6 +126,9 @@ const Login = ({ isAuthenticated }) => {
               </Box>
             </Stack>
           </form>
+
+        )}
+          
         </VStack>
       </Container>
     </Box>
