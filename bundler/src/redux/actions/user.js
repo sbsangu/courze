@@ -74,7 +74,7 @@ export const register = formdata => async dispatch => {
 
     dispatch({ type: 'registerSuccess', payload: data });
 
-    console.log(data);
+    // console.log(data);
   } catch (error) {
     dispatch({ type: 'registerFail', payload: error.response.data.message });
   }
