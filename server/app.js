@@ -20,13 +20,13 @@ app.use(
   })
 );
 
-app.use(cors());
-  // cors({
-  //    origin: process.env.FRONTEND_URL,
-  //   credentials: true,
-  //   // methods: ["GET", "POST", "PUT", "DELETE"],
-  // })
-
+app.use(
+  cors({
+     origin: process.env.FRONTEND_URL,
+    credentials: true,
+    // methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 
 // app.get("/", (req, res) => {
 //   res.send(`<h1>Site is workin fine.click to get frontend</h1>`)
