@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { userReducer } from './reducers/userReducer';
 
-export const server = 'https://courze-api.vercel.app';
+export const server = 'https://courze-api.vercel.app/ai/v1';
 const store = configureStore({
   reducer: {
     user: userReducer,
