@@ -1,7 +1,7 @@
 import {
   Box,
   Container,
-  FormControl,
+
   FormLabel,
   Heading,
   Input,
@@ -13,9 +13,9 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loadUser, login } from '../../redux/actions/user';
+import {  login } from '../../redux/actions/user.js';
 import { useNavigate } from 'react-router-dom';
-import { typography } from '@chakra-ui/react';
+// import { typography } from '@chakra-ui/react';
 
 const Login = ({ isAuthenticated }) => {
   const [email, setEmail] = useState('');
@@ -27,15 +27,14 @@ const Login = ({ isAuthenticated }) => {
 
     dispatch(login(email, password));
 
-    console.log(isAuthenticated);
+   
 
-    if (isAuthenticated) {
-      await dispatch(loadUser());
-    }
+    
   };
-  useEffect(() => {
-    dispatch(loadUser());
-  }, [dispatch]);
+  
+  // useEffect(() => {
+  //   dispatch(loadUser());
+  // }, [dispatch]);
 
   return (
     <Box marginTop={['20', '10']} minH={'95vh'}>
@@ -64,7 +63,8 @@ const Login = ({ isAuthenticated }) => {
           <h3>You Are Already Logged In</h3>
         ):(
 
-          <form onSubmit={submitHandler}>
+       <div>
+       <form onSubmit={submitHandler}>
             <Stack spacing={'7'}>
               <Box>
                 <FormLabel>Email Address</FormLabel>
@@ -126,6 +126,7 @@ const Login = ({ isAuthenticated }) => {
               </Box>
             </Stack>
           </form>
+       </div>
 
         )}
           

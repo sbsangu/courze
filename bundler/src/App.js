@@ -35,8 +35,17 @@ function App() {
   );
   const dispatch = useDispatch();
   useEffect(() => {
+   
+   if(isAuthenticated) {
     dispatch(loadUser());
+   }
+    
+
+    
   }, [dispatch]);
+
+  console.log(isAuthenticated)
+
 
   useEffect(() => {
     if (error) {
@@ -56,17 +65,17 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:id" element={<CoursePage />} />
-       {/* {isAuthenticated ? (
+       {isAuthenticated ? (
         <Route  path="/login" element=<Home/>/>
        ):(  <Route
           path="/login"
           element={<Login isAuthenticated={isAuthenticated} />}
-        />)} */}
-
+        />)}
+{/* 
         <Route
           path="/login"
           element={ isAuthenticated ?  <Home  isAuthenticated={isAuthenticated} /> :<Login isAuthenticated={isAuthenticated} />}
-        />
+        /> */}
         <Route path="/register" element={<Register />} />
         <Route path="/request" element={<Request />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
@@ -76,7 +85,7 @@ function App() {
         <Route path="/paymentsuccess" element={<PaymentSuccess />} />
         <Route path="/paymentfail" element={<PaymentFail />} />
         <Route path="/*" element={<NotFound />} />
-        {isAuthenticated && <Route path="/profile" element={<Profile />} />}
+        {/* {isAuthenticated && <Route path="/profile" element={<Profile />} />} */}
 
         <Route path="/updateprofile" element={<UpdateProfile />} />
         <Route path="/changepassword" element={<ChangePassword />} />

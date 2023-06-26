@@ -19,6 +19,7 @@ import introVideo from '../../assets/videos/intro.mp4';
 
 
 const Home = ({isAuthenticated}) => {
+  console.log(isAuthenticated);
   const navigate=useNavigate()
 
   useEffect(() => {
