@@ -45,10 +45,10 @@ const Register = () => {
 
     const submitHandler = (e)=>{
         e.preventDefault();
-       console.log(name,email,password,file)
+      
 
 
-       dispatch(register( name, email, password ,file))
+       dispatch(register( name, email, password , file))
      
     }
        

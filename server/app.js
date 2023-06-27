@@ -22,11 +22,11 @@ app.use(
 console.log(process.env.FRONTEND_URL)
 
 app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
+  cors(
+    // origin: "http://localhost:3000",
+    // credentials: true,
     // methods: ["GET", "POST", "PUT", "DELETE"],
-  })
+  )
 );
 
 // app.get("/", (req, res) => {
