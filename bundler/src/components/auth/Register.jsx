@@ -31,8 +31,8 @@ const Register = () => {
     const [name,setName]=useState("")
     const [imgPrev,setImgPrev]=useState("")
     const [image,setImage]=useState('')
-    const submitHandler=async(e)=>{
-        e.preventDefault();
+    const submitHandler=(e)=>{
+        e.preventDefault()
         const myForm=new FormData();
         myForm.append("name",name)
         myForm.append("email",email)
@@ -40,18 +40,21 @@ const Register = () => {
         myForm.append("file",image)
        
 
-        await dispatch(register(myForm))
+        dispatch(register(myForm))
         console.log({...myForm});
     }
 
     const changeImageHandler=(e)=>{
         const file=e.target.files[0]
-        const reader=new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend=()=>{
-            setImgPrev(reader.result);
-            setImage(file);
-        }
+        // const reader=new FileReader();
+        // reader.readAsDataURL(file);
+        // reader.onloadend=()=>{
+        //     setImgPrev(reader.result);
+        //     setImage(file);
+        // }
+        const fileURL = URL.createObjectURL(file);
+        setImgPrev(fileURL);
+        setImage(fileURL);
 
 
     }
@@ -83,7 +86,7 @@ const Register = () => {
     <Input required={'true'} type={'password'} value={password} onChange={(e)=>{setPassword(e.target.value)}} placeholder="Password" focusBorderColor='red.900'></Input></Box>
     <Box>
     <FormLabel >Avatar</FormLabel>
-    <Input required type={'file'}  placeholder="Choose Avatar" focusBorderColor='red.900' css={fileUploadStyle} onChange={changeImageHandler}></Input></Box>
+    <Input required type={'file'}  placeholder="Choose Avatar" focusBorderColor='red.900' css={fileUploadStyle} onChange={changeImageHandler}/></Box>
     
 
        

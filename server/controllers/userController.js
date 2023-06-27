@@ -26,8 +26,8 @@ export const register= catchAsyncError(async (req, res, next) => {
   //   return user.name;
   // }
 
-  const fileUri = getDataUri(file);
-  const mycloud = await cloudinary.v2.uploader.upload(fileUri.content);
+  // const fileUri = getDataUri(file);
+  const mycloud = await cloudinary.v2.uploader.upload(file);
 
   user = await User.create({
     name,
