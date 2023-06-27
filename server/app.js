@@ -19,11 +19,12 @@ app.use(
     extended: true,
   })
 );
+console.log(process.env.FRONTEND_URL)
 
 app.use(
   cors({
-     origin: process.env.FRONTEND_URL,
-    credentials:true,
+    origin: "http://localhost:3000",
+    credentials: true,
     // methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );

@@ -68,7 +68,7 @@ export const register = (name,email,password,file)=> async dispatch => {
       headers: {
         "Content-Type":"application/json"
       },
-      withCredentials: true,
+      // withCredentials: true,
 
       // whenever cookies is used
     });
@@ -77,6 +77,6 @@ export const register = (name,email,password,file)=> async dispatch => {
 
     console.log(data);
   } catch (error) {
-    dispatch({ type: 'registerFail', payload: error.response.data.message });
+    dispatch({ type: 'registerFail', payload: error.message });
   }
 };

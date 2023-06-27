@@ -35,19 +35,12 @@ function App() {
   );
   const dispatch = useDispatch();
   useEffect(() => {
-   
-  
-    if(isAuthenticated){
-    dispatch(loadUser());
+    if (isAuthenticated) {
+      dispatch(loadUser());
     }
-   
-    
-
-    
   }, [dispatch]);
 
-  console.log(isAuthenticated)
-
+  console.log(isAuthenticated);
 
   useEffect(() => {
     if (error) {
@@ -64,21 +57,33 @@ function App() {
     <BrowserRouter>
       <Header isAuthenticated={isAuthenticated} user={user} />
       <Routes>
-        <Route path="/" element={<Home isAuthenticated={isAuthenticated}/>} />
+        <Route path="/" element={<Home isAuthenticated={isAuthenticated} />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:id" element={<CoursePage />} />
-       {isAuthenticated ? (
-        <Route  path="/login" element=<Home isAuthenticated={isAuthenticated}/>/>
-       ):(  <Route
-          path="/login"
-          element={<Login isAuthenticated={isAuthenticated} />}
-        />)}
-{/* 
+        {isAuthenticated ? (
+          <Route
+            path="/login"
+            element=<Home isAuthenticated={isAuthenticated} />
+          />
+        ) : (
+          <Route
+            path="/login"
+            element={<Login isAuthenticated={isAuthenticated} />}
+          />
+        )}
+        {/* 
         <Route
           path="/login"
           element={ isAuthenticated ?  <Home  isAuthenticated={isAuthenticated} /> :<Login isAuthenticated={isAuthenticated} />}
         /> */}
-        <Route path="/register" element={<Register />} />
+        {isAuthenticated ? (
+          <Route
+            path="/register"
+            element=<Home isAuthenticated={isAuthenticated} />
+          />
+        ) : (
+          <Route path="/register" element={<Register />} />
+        )}
         <Route path="/request" element={<Request />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/resetpassword/:token" element={<Resetpassword />} />
