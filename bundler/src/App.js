@@ -37,7 +37,9 @@ function App() {
   useEffect(() => {
    
   
+    if(isAuthenticated){
     dispatch(loadUser());
+    }
    
     
 

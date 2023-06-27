@@ -7,7 +7,7 @@ const router=express.Router();
 
 //to register a new user
 
-router.route("/register").post( singleUpload ,register)
+router.route("/register").post(register)
 
 router.route("/login").post(login)
 

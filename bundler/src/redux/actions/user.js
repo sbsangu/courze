@@ -64,7 +64,7 @@ export const logout = () => async dispatch => {
 export const register = formdata => async dispatch => {
   try {
     dispatch({ type: 'registerRequest' });
-    const { data } = await axios.post(`${server}/register`, formdata, {
+    const { data } = await axios.post(`${server}/register`,formdata, {
       headers: {
         'Content-type': 'multipart/form-data',
       },
@@ -73,9 +73,9 @@ export const register = formdata => async dispatch => {
       // whenever cookies is used
     });
 
-    dispatch({ type: 'registerSuccess', payload: data });
+   await  dispatch({ type: 'registerSuccess', payload: data });
 
-    // console.log(data);
+    console.log(data);
   } catch (error) {
     dispatch({ type: 'registerFail', payload: error.response.data.message });
   }

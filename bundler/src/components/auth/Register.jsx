@@ -31,15 +31,17 @@ const Register = () => {
     const [name,setName]=useState("")
     const [imgPrev,setImgPrev]=useState("")
     const [image,setImage]=useState('')
-    const submitHandler=(e)=>{
+    const submitHandler=async(e)=>{
         e.preventDefault();
         const myForm=new FormData();
         myForm.append("name",name)
         myForm.append("email",email)
         myForm.append("password",password)
         myForm.append("file",image)
+       
 
-        dispatch(register(myForm))
+        await dispatch(register(myForm))
+        console.log({...myForm});
     }
 
     const changeImageHandler=(e)=>{
