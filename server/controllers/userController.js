@@ -17,8 +17,8 @@ export const register= catchAsyncError(async (req, res, next) => {
   // const file = req.file;
   console.log(name,email,password,file);
 
-  // if (!name || !email || !password || !file)
-    // return next(new ErrorHandler("Please enter all field", 400));
+  if (!name || !email || !password || !file)
+    return next(new ErrorHandler("Please enter all field", 400));
 
   const user = await User.findOne({ email });
 

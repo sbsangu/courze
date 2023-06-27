@@ -30,35 +30,28 @@ const Register = () => {
     const [password,setPassword]=useState("")
     const [name,setName]=useState("")
     const [imgPrev,setImgPrev]=useState("")
-    const [image,setImage]=useState('')
-    const submitHandler=(e)=>{
-        e.preventDefault()
-        const myForm=new FormData();
-        myForm.append("name",name)
-        myForm.append("email",email)
-        myForm.append("password",password)
-        myForm.append("file",image)
-       
-
-        dispatch(register(myForm))
-        console.log({...myForm});
-    }
-
+    const [file,setFile]=useState('')
     const changeImageHandler=(e)=>{
         const file=e.target.files[0]
-        // const reader=new FileReader();
-        // reader.readAsDataURL(file);
-        // reader.onloadend=()=>{
-        //     setImgPrev(reader.result);
-        //     setImage(file);
-        // }
-        const fileURL = URL.createObjectURL(file);
-        setImgPrev(fileURL);
-        setImage(fileURL);
-
-
+        const reader=new FileReader();
+        reader.onload=()=>{
+            if(reader.readyState===2){
+                setFile(reader.result)
+                setImgPrev(reader.result);
+            }
+        }
+        reader.readAsDataURL(file)
     }
-    
+
+    const submitHandler = (e)=>{
+        e.preventDefault();
+       console.log(name,email,password,file)
+
+
+       dispatch(register( name, email, password ,file))
+     
+    }
+       
 
 
   return (

@@ -61,12 +61,12 @@ export const logout = () => async dispatch => {
   }
 };
 
-export const register = formdata => async dispatch => {
+export const register = (name,email,password,file)=> async dispatch => {
   try {
     dispatch({ type: 'registerRequest' });
-    const { data } = await axios.post(`${server}/register`,formdata, {
+    const { data } = await axios.post(`${server}/register`,{name,email,password,file}, {
       headers: {
-        'Content-type': 'multipart/form-data',
+        "Content-Type":"application/json"
       },
       withCredentials: true,
 
