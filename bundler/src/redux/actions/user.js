@@ -16,6 +16,7 @@ export const login = (email, password) => async dispatch => {
         // whenever cookies is used
       }
     );
+    console.log(data)
 
     dispatch({ type: 'loginSuccess', payload: data });
 
@@ -63,7 +64,7 @@ export const logout = () => async dispatch => {
 export const register = formdata => async dispatch => {
   try {
     dispatch({ type: 'registerRequest' });
-    const { data } = await axios.post(`${server}/api/v1/register`, formdata, {
+    const { data } = await axios.post(`${server}/register`, formdata, {
       headers: {
         'Content-type': 'multipart/form-data',
       },

@@ -36,9 +36,9 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
    
-   if(isAuthenticated) {
+  
     dispatch(loadUser());
-   }
+   
     
 
     
@@ -62,11 +62,11 @@ function App() {
     <BrowserRouter>
       <Header isAuthenticated={isAuthenticated} user={user} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home isAuthenticated={isAuthenticated}/>} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:id" element={<CoursePage />} />
        {isAuthenticated ? (
-        <Route  path="/login" element=<Home/>/>
+        <Route  path="/login" element=<Home isAuthenticated={isAuthenticated}/>/>
        ):(  <Route
           path="/login"
           element={<Login isAuthenticated={isAuthenticated} />}
